@@ -1,0 +1,68 @@
+<!-- begin_live_video_item -->
+<div class="live-item-container col s12 m6 l4">
+    <div class="card live-card hoverable">
+        <div class="card-image">
+            <div class="live-indicator">LIVE</div>
+            <img src="{url_files}user_videos/{user_id}/{video_id}_th.jpg" alt="{title}" onerror="this.src='{url_main}_frameworks/main/whisprrz_Edge/images/live_default.jpg'">
+            <a href="{url_main}live_stream.php?id={video_id}" class="btn-floating halfway-fab waves-effect waves-light red">
+                <i class="material-icons">play_arrow</i>
+            </a>
+        </div>
+        <div class="card-content">
+            <span class="card-title truncate">{title}</span>
+            <p class="truncate">{description}</p>
+        </div>
+        <div class="card-action">
+            <a href="{url_main}search_results.php?display=profile&uid={user_id}" class="user-link">
+                <img src="{url_files}user_photos/{user_id}_th.jpg" alt="{user_name}" class="circle user-thumb" onerror="this.src='{url_main}_frameworks/main/whisprrz_Edge/images/noavatar.png'">
+                <span class="user-name">{user_name}</span>
+            </a>
+            <span class="live-viewers right">{viewers} watching</span>
+        </div>
+    </div>
+</div>
+<!-- end_live_video_item -->
+
+<style>
+    .live-item-container {
+        padding: 10px;
+    }
+    
+    .live-card {
+        position: relative;
+        margin: 0;
+    }
+    
+    .live-indicator {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: #f44336;
+        color: white;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-weight: bold;
+        z-index: 1;
+    }
+    
+    .card-image img {
+        height: 180px;
+        object-fit: cover;
+    }
+    
+    .user-link {
+        display: flex;
+        align-items: center;
+        color: inherit;
+    }
+    
+    .user-thumb {
+        width: 24px;
+        height: 24px;
+        margin-right: 8px;
+    }
+    
+    .live-viewers {
+        color: #f44336;
+    }
+</style>

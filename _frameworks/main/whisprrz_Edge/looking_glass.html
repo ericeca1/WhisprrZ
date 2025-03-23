@@ -1,0 +1,432 @@
+{header}
+{search}
+
+<!-- Add stylesheet links with updated paths to Edge folder -->
+<link rel="stylesheet" href="{url_main}_frameworks/main/whisprrz_Edge/css/looking_glass.css">
+<link rel="stylesheet" href="{url_main}_frameworks/main/whisprrz_Edge/css/modals.css">
+<link rel="stylesheet" href="{url_main}_frameworks/main/whisprrz_Edge/css/calendar.css">
+<link rel="stylesheet" href="{url_main}_frameworks/main/whisprrz_Edge/css/gear_modal.css">
+
+<div class="frame_content">
+    <script>
+        clPages.setData({
+            urlPage: '{url_main}{url_pages}',
+            pageType: '{page_type}',
+            page: '{page_number}' * 1,
+            type_order: '{type_order}',
+            tags: '{tags}',
+            only_friends: '{only_friends}' * 1,
+            only_live: '{only_live}' * 1,
+            uid: '{page_user_id}' * 1,
+            guid: '{page_guid}' * 1,
+            param: '{page_param}' ? '{page_param}' : 'page',
+            filter: '{page_filter}' * 1,
+            isMyFriend: '{page_my_friends}' * 1,
+            groupId: '{group_id}' * 1,
+            groupType: '{group_type}'
+        });
+
+        try {
+            clPages.initList();
+        } catch (error) {
+            console.error("Error initializing list:", error);
+        }
+    </script>
+
+    <!-- begin_looking_glass_group -->
+    <div class="looking-glass-container">
+        <div class="looking-glass-header">
+            <h5 class="sub-group-title">
+                {looking_glass_group_title}
+            </h5>
+
+            <div class="tabbable-panel">
+                <div class="tabbable-line">
+                    <ul class="nav nav-tabs">
+                        <li>
+                            <a href="javascript:void(0);" data-toggle="modal" data-target="#lookingGlassSearchModal">Search</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" onclick="loadTab('photos')">Photos</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" onclick="loadTab('friends')">Friends</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" onclick="loadTab('online')">Online now</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">New matches</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">User near me</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">Live now</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="feed_head_txt">
+                <a class="icon_setting_gear" href="javascript:void(0);" onclick="openGearModal()"></a>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div><hr></div>
+
+        <div class="blogs_wrap page_list {page_class}">
+            <div class="list-container">
+                <div class="module_filter_result">
+                    <div class="row filter_result gallery-container">
+                        <!-- begin_photo_items -->
+                        {photo_item}
+                        <!-- end_photo_items -->
+
+                        <!-- begin_video_items -->
+                        {video_item}
+                        <!-- end_video_items -->
+
+                        <!-- begin_live_video_items -->
+                        {live_video_item}
+                        <!-- end_live_video_items -->
+
+                        <!-- begin_list_noitems -->
+                        <div class="wrapper_center">
+                            <div class="bl_no_one">
+                                <div class="icon circle_neutral_face"></div>
+                                <div class="txt">{l_page_nothing_here_yet}</div>
+                                <div class="txt blogs_bl_no_one">
+                                    {l_page_nothing_here_yet}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+                        <!-- end_list_noitems -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end_looking_glass_group -->
+
+    <!-- Modals section with simplified structure -->
+    
+    <!-- Gear Modal -->
+    <div id="gearModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close" id="closeGearModalBtn">&times;</span>
+                    <h4 class="modal-title">User Preferences</h4>
+                </div>
+                <div class="modal-body">
+                    <!-- Settings navigation tabs -->
+                    <ul class="nav nav-tabs" id="settingsTabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="display-tab" data-toggle="tab" href="#display" role="tab">Content Display</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="video-tab" data-toggle="tab" href="#video" role="tab">Live Video</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="playback-tab" data-toggle="tab" href="#playback" role="tab">Playback</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="personalization-tab" data-toggle="tab" href="#personalization" role="tab">Personalization</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="privacy-tab" data-toggle="tab" href="#privacy" role="tab">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="photo-tab" data-toggle="tab" href="#photo" role="tab">Photo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="ux-tab" data-toggle="tab" href="#ux" role="tab">Interface</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="analytics-tab" data-toggle="tab" href="#analytics" role="tab">Analytics</a>
+                        </li>
+                    </ul>
+                    
+                    <div id="gear-modal-container">
+                        <!-- Content will be loaded here via AJAX -->
+                        <div class="text-center">
+                            <p>Loading settings...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="closeGearModalBtn2">Close</button>
+                    <button type="button" class="btn btn-primary" id="gear-settings-submit">Save Settings</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Modal -->
+    <div id="lookingGlassSearchModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close" id="lookingGlassModalClose">&times;</span>
+                    <h4 class="modal-title">{l_search}</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="looking-glass-search-container">
+                        <!-- Form will be loaded here via AJAX -->
+                        <div class="text-center">
+                            <p>Loading search form...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="lookingGlassModalClose2">Close</button>
+                    <button type="button" id="looking-glass-search-submit" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Clean, shared modal JavaScript -->
+    <script>
+        // Clean functions to handle both modals
+        function openModal(modalId, loadFn) {
+            console.log('Opening modal:', modalId);
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            
+            if (loadFn) {
+                loadFn();
+            }
+        }
+        
+        function closeModal(modalId) {
+            console.log('Closing modal:', modalId);
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+        
+        // Specific functions for each modal
+        function openGearModal() {
+            openModal('gearModal', loadGearContent);
+        }
+        
+        function closeGearModal() {
+            closeModal('gearModal');
+        }
+        
+        function showSearchModal() {
+            openModal('lookingGlassSearchModal', loadSearchContent);
+        }
+        
+        function hideSearchModal() {
+            closeModal('lookingGlassSearchModal');
+        }
+        
+        // Content loading functions
+        function loadGearContent() {
+            fetch('/include_gear_modal.php')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    document.getElementById('gear-modal-container').innerHTML = html;
+                    // Initialize the first tab
+                    $('#settingsTabs a:first').tab('show');
+                    // Load saved settings
+                    loadSavedSettings();
+                })
+                .catch(error => {
+                    console.error('Error loading gear settings:', error);
+                });
+        }
+        
+        function loadSearchContent() {
+            fetch('/include_search_form.php')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    document.getElementById('looking-glass-search-container').innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Error loading search form:', error);
+                });
+        }
+        
+        // Save settings to localStorage
+        function saveSettings() {
+            // Collect all settings from the form
+            const settings = {
+                display: {
+                    filterLiveVideos: $('#filterLiveVideos').is(':checked'),
+                    filterPhotos: $('#filterPhotos').is(':checked'),
+                    filterPastStreams: $('#filterPastStreams').is(':checked'),
+                    sortPreference: $('#sortPreference').val(),
+                    viewMode: $('input[name="viewMode"]:checked').attr('id')
+                },
+                video: {
+                    quality: $('#videoQuality').val(),
+                    notifications: $('#liveNotifications').is(':checked'),
+                    favoritesOnly: $('#favoritesNotifications').is(':checked'),
+                    enableChat: $('#enableChat').is(':checked'),
+                    enableReactions: $('#enableReactions').is(':checked')
+                }
+            };
+            
+            localStorage.setItem('userPreferences', JSON.stringify(settings));
+            closeGearModal();
+            alert('Settings saved successfully!');
+        }
+        
+        // Load saved settings
+        function loadSavedSettings() {
+            const savedSettings = localStorage.getItem('userPreferences');
+            if (savedSettings) {
+                const settings = JSON.parse(savedSettings);
+                
+                // Apply settings to the form elements
+                if (settings.display) {
+                    $('#filterLiveVideos').prop('checked', settings.display.filterLiveVideos);
+                    $('#filterPhotos').prop('checked', settings.display.filterPhotos);
+                    $('#filterPastStreams').prop('checked', settings.display.filterPastStreams);
+                    $('#sortPreference').val(settings.display.sortPreference);
+                    $('#' + settings.display.viewMode).prop('checked', true);
+                }
+                
+                if (settings.video) {
+                    $('#videoQuality').val(settings.video.quality);
+                    $('#liveNotifications').prop('checked', settings.video.notifications);
+                    $('#favoritesNotifications').prop('checked', settings.video.favoritesOnly);
+                    $('#enableChat').prop('checked', settings.video.enableChat);
+                    $('#enableReactions').prop('checked', settings.video.enableReactions);
+                }
+            }
+        }
+        
+        // Add event listeners when document is ready
+        $(document).ready(function() {
+            // Set up event handlers for both modals
+            
+            // Gear modal handlers
+            $('.icon_setting_gear').on('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                openGearModal();
+            });
+            
+            $(document).on('click', '#closeGearModalBtn, #closeGearModalBtn2', function() {
+                closeGearModal();
+            });
+            
+            $(document).on('click', '#gear-settings-submit', function() {
+                saveSettings();
+            });
+            
+            $('#gearModal').on('click', function(event) {
+                if ($(event.target).closest('.modal-content').length === 0) {
+                    closeGearModal();
+                }
+            });
+            
+            // Search modal handlers
+            $('a[data-toggle="modal"][data-target="#lookingGlassSearchModal"]').on('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                showSearchModal();
+            });
+            
+            $(document).on('click', '#lookingGlassModalClose, #lookingGlassModalClose2', function(e) {
+                e.preventDefault();
+                hideSearchModal();
+            });
+            
+            $(document).on('click', '#looking-glass-search-submit', function() {
+                $('#looking-glass-search-form').submit();
+                hideSearchModal();
+            });
+            
+            $('#lookingGlassSearchModal').on('click', function(event) {
+                if ($(event.target).closest('.modal-content').length === 0) {
+                    hideSearchModal();
+                }
+            });
+            
+            // Tab navigation for gear modal
+            $(document).on('click', '#settingsTabs a', function(e) {
+                e.preventDefault();
+                $(this).tab('show');
+            });
+        });
+        
+        // Debug helpers
+        function debugModalState() {
+            console.log('Gear Modal Display:', $('#gearModal').css('display'));
+            console.log('Search Modal Display:', $('#lookingGlassSearchModal').css('display'));
+            console.log('Body has modal-open class:', $('body').hasClass('modal-open'));
+        }
+        
+        // Expose key functions globally for debugging
+        window.debugModalState = debugModalState;
+        window.openGearModal = openGearModal;
+        window.closeGearModal = closeGearModal;
+        window.showSearchModal = showSearchModal;
+        window.hideSearchModal = hideSearchModal;
+    </script>
+
+    <!-- Replace the extensive gallery enhancement scripts with a minimal fix for original behavior -->
+    <script>
+        $(document).ready(function() {
+            // Simple function to ensure gallery is visible with doubled height
+            function ensureGalleryVisible() {
+                // Check if gallery exists
+                if ($('.pp_gallery_overflow').length) {
+                    // Only apply the most essential fixes to ensure visibility
+                    $('.pp_gallery_overflow').css({
+                        'display': 'block',
+                        'visibility': 'visible'
+                    });
+                    
+                    // Make sure the container is properly visible
+                    $('.pp_gallery_overflow .container').css({
+                        'display': 'block',
+                        'visibility': 'visible'
+                    });
+                    
+                    // Adjust any dynamically created gallery items
+                    $('.pp_gallery_overflow .gallery-item').css({
+                        'height': '560px', // Doubled height
+                        'display': 'inline-block',
+                        'visibility': 'visible'
+                    });
+                    
+                    console.log('Gallery visibility and height adjusted');
+                }
+            }
+            
+            // Run immediately and after a delay
+            ensureGalleryVisible();
+            setTimeout(ensureGalleryVisible, 500);
+            
+            // Also check after AJAX content loads
+            $(document).ajaxComplete(function() {
+                setTimeout(ensureGalleryVisible, 300);
+            });
+            
+            // Make this function available globally for debugging
+            window.fixGallery = ensureGalleryVisible;
+        });
+    </script>
+</div>
+
+{footer}

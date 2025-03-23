@@ -1,0 +1,6 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Rewrite requests to the specified subdirectories to image.php
+    RewriteRule ^(adv_images|audio_greeting|blogs|city|events_event_images|gallery|hotdates_hotdate_images|im_audio_message|music|music_musician_images|music_song_images|outside_images|partyhouz_partyhou_images|photo|places_images|video|wall|wowslider)/(.*)$ image.php?file=$1/$2 [L,QSA]
+</IfModule>

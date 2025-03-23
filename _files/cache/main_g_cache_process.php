@@ -1,0 +1,1 @@
+a:1:{s:14:"to_php_alfabet";a:1:{s:51:" AND 19 & (1 << (cast(orientation AS signed) - 1)) ";s:44:"and_19__1_ltlt_castorientation_as_signed_-_1";}}
