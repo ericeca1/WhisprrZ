@@ -225,68 +225,69 @@
     <!-- end_looking_glass_group -->
 </div>
 
-<!-- Updated Gear Modal -->
+<!-- Completely updated Gear Modal -->
 <div id="gearModal" class="modal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <!-- Removed modal-header and moved title to the top -->
-            <h2>User Preferences</h2>
-            <div class="modal-body">
-                <!-- Preferences Content -->
-                <div class="pref-section">
-                    <label for="defaultContent">Default View:</label>
-                    <select id="defaultContent" class="pref-select">
-                        <option value="photos">Photos</option>
-                        <option value="videos">Videos</option>
-                        <option value="live">Live Streams</option>
-                        <option value="partyhouz">Partyhouz Events</option>
-                    </select>
-                </div>
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeGearModal()">&times;</span>
+        <h2>User Preferences</h2>
 
-                <div class="pref-section">
-                    <p>Sort content by default using:</p>
-                    <div class="radio-group">
-                        <label><input type="radio" name="sort" value="latest" checked> Latest</label>
-                        <label><input type="radio" name="sort" value="trending"> Trending</label>
-                        <label><input type="radio" name="sort" value="popular"> Most Viewed</label>
-                    </div>
-                </div>
+        <!-- Default Content Selection -->
+        <div class="pref-section">
+            <label for="defaultContent">Default View:</label>
+            <select id="defaultContent" class="pref-select">
+                <option value="photos">Photos</option>
+                <option value="videos">Videos</option>
+                <option value="live">Live Streams</option>
+                <option value="partyhouz">Partyhouz Events</option>
+            </select>
+        </div>
 
-                <div class="pref-section">
-                    <p>Content Display:</p>
-                    <div class="checkbox-group">
-                        <label><input type="checkbox" id="showPhotos" checked> Show Photos</label>
-                        <label><input type="checkbox" id="showVideos" checked> Show Videos</label>
-                        <label><input type="checkbox" id="showLiveStreams" checked> Show Live Streams</label>
-                        <label><input type="checkbox" id="showPartyhouz" checked> Show Partyhouz Events</label>
-                    </div>
-                </div>
-
-                <div class="pref-section">
-                    <p>Notifications:</p>
-                    <div class="checkbox-group">
-                        <label><input type="checkbox" id="notifyLiveStreams" checked> Notify when friends go live</label>
-                        <label><input type="checkbox" id="notifyPartyhouz"> Notify about upcoming events</label>
-                    </div>
-                </div>
-
-                <div class="pref-section">
-                    <label for="itemsPerPage">Items per page:</label>
-                    <select id="itemsPerPage" class="pref-select">
-                        <option value="12">12 items</option>
-                        <option value="24" selected>24 items</option>
-                        <option value="48">48 items</option>
-                    </select>
-                    <div class="checkbox-group">
-                        <label><input type="checkbox" id="autoplayVideos"> Autoplay videos when browsing</label>
-                        <label><input type="checkbox" id="muteVideos" checked> Mute videos by default</label>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="save-btn" onclick="saveUserPreferences()">Save Preferences</button>
+        <!-- Sorting Preference -->
+        <div class="pref-section">
+            <p>Sort content by default using:</p>
+            <div class="radio-group">
+                <label><input type="radio" name="sort" value="latest" checked> Latest</label>
+                <label><input type="radio" name="sort" value="trending"> Trending</label>
+                <label><input type="radio" name="sort" value="popular"> Most Viewed</label>
             </div>
         </div>
+
+        <!-- Content Filters -->
+        <div class="pref-section">
+            <p>Content Display:</p>
+            <div class="checkbox-group">
+                <label><input type="checkbox" id="showPhotos" checked> Show Photos</label>
+                <label><input type="checkbox" id="showVideos" checked> Show Videos</label>
+                <label><input type="checkbox" id="showLiveStreams" checked> Show Live Streams</label>
+                <label><input type="checkbox" id="showPartyhouz" checked> Show Partyhouz Events</label>
+            </div>
+        </div>
+
+        <!-- Notification Settings -->
+        <div class="pref-section">
+            <p>Notifications:</p>
+            <div class="checkbox-group">
+                <label><input type="checkbox" id="notifyLiveStreams" checked> Notify when friends go live</label>
+                <label><input type="checkbox" id="notifyPartyhouz"> Notify about upcoming events</label>
+            </div>
+        </div>
+
+        <!-- Display Options -->
+        <div class="pref-section">
+            <label for="itemsPerPage">Items per page:</label>
+            <select id="itemsPerPage" class="pref-select">
+                <option value="12">12 items</option>
+                <option value="24" selected>24 items</option>
+                <option value="48">48 items</option>
+            </select>
+            <div class="checkbox-group"></div>
+                <label><input type="checkbox" id="autoplayVideos"> Autoplay videos when browsing</label>
+                <label><input type="checkbox" id="muteVideos" checked> Mute videos by default</label>
+            </div>
+        </div>
+
+        <!-- Save Button -->
+        <button class="save-btn" onclick="saveUserPreferences()">Save Preferences</button>
     </div>
 </div>
 
@@ -491,10 +492,10 @@
                             </select>
                         </div>
                         
-                        <!-- Advanced Options Section -->
-                        <div class="form-group">
-                            <h5>Advanced Options</h5>
-                            <div id="advancedSearchOptions">
+                        <div class="advanced-options" style="margin-top: 15px;">
+                            <p><a href="#" data-toggle="collapse" data-target="#advancedSearchOptions">Advanced Options <i class="fa fa-chevron-down"></i></a></p>
+                            
+                            <div id="advancedSearchOptions" class="collapse">
                                 <div class="form-group">
                                     <label for="searchLocation">Location:</label>
                                     <input type="text" class="form-control" id="searchLocation" name="location" placeholder="City, state or country">
@@ -888,183 +889,6 @@ $(document).ready(function() {
         }
     });
 });
-</script>
-
-<!-- Search Modal -->
-<div id="lookingGlassSearchModal" class="modal fade" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
-                <h4 class="modal-title">Search LookingGlass</h4>
-            </div>
-            <div class="modal-body">
-                <!-- ...existing form content... -->
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" onclick="submitLookingGlassSearch()">Search</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Gear Modal -->
-<div id="gearModal" class="modal fade" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeGearModal()">&times;</span>
-            <h2>User Preferences</h2>
-            <!-- ...existing gear modal content... -->
-        </div>
-    </div>
-</div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    // Ensure modals are independent
-    const searchModal = document.getElementById('lookingGlassSearchModal');
-    const gearModal = document.getElementById('gearModal');
-
-    // Prevent modals from overlapping
-    if (searchModal && gearModal) {
-        searchModal.addEventListener('show.bs.modal', function () {
-            if (gearModal.style.display === 'block') {
-                closeGearModal();
-            }
-        });
-
-        gearModal.addEventListener('show.bs.modal', function () {
-            if (searchModal.style.display === 'block') {
-                $('#lookingGlassSearchModal').modal('hide');
-            }
-        });
-    }
-
-    // Open gear modal
-    window.openGearModal = function () {
-        const modal = document.getElementById('gearModal');
-        if (modal) {
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        }
-    };
-
-    // Close gear modal
-    window.closeGearModal = function () {
-        const modal = document.getElementById('gearModal');
-        if (modal) {
-            modal.style.display = 'none';
-            document.body.style.overflow = ''; // Restore background scrolling
-        }
-    };
-
-    // Ensure clicking outside the modal closes it
-    window.onclick = function (event) {
-        if (event.target === gearModal) {
-            closeGearModal();
-        }
-    };
-});
-</script>
-
-<!-- Updated Search Modal -->
-<div id="lookingGlassSearchModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
-                <h4 class="modal-title">Search LookingGlass</h4>
-            </div>
-            <div class="modal-body">
-                <form id="lookingGlassSearchForm" action="" method="get">
-                    <div class="form-group">
-                        <label for="searchKeyword">Keyword or Name:</label>
-                        <input type="text" class="form-control" id="searchKeyword" name="keyword" placeholder="Enter keyword, name or username">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Content Type:</label>
-                        <div class="checkbox-group">
-                            <label><input type="checkbox" name="contentType[]" value="photos" checked> Photos</label>
-                            <label><input type="checkbox" name="contentType[]" value="videos" checked> Videos</label>
-                            <label><input type="checkbox" name="contentType[]" value="live" checked> Live Streams</label>
-                            <label><input type="checkbox" name="contentType[]" value="events" checked> Events</label>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="searchDate">Date Range:</label>
-                        <select class="form-control" id="searchDate" name="dateRange">
-                            <option value="any">Any time</option>
-                            <option value="today">Today</option>
-                            <option value="week">This week</option>
-                            <option value="month">This month</option>
-                            <option value="year">This year</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Search In:</label>
-                        <div class="radio-group">
-                            <label><input type="radio" name="searchScope" value="all" checked> All content</label>
-                            <label><input type="radio" name="searchScope" value="friends"> Friends only</label>
-                            <label><input type="radio" name="searchScope" value="following"> Following only</label>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="searchSortBy">Sort By:</label>
-                        <select class="form-control" id="searchSortBy" name="sortBy">
-                            <option value="recent">Most recent</option>
-                            <option value="popular">Most popular</option>
-                            <option value="relevant">Most relevant</option>
-                        </select>
-                    </div>
-                    
-                    <!-- Advanced Options Section -->
-                    <div class="form-group">
-                        <h5>Advanced Options</h5>
-                        <div id="advancedSearchOptions">
-                            <div class="form-group">
-                                <label for="searchLocation">Location:</label>
-                                <input type="text" class="form-control" id="searchLocation" name="location" placeholder="City, state or country">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="searchTags">Tags:</label>
-                                <input type="text" class="form-control" id="searchTags" name="tags" placeholder="Enter tags separated by commas">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label>Content Rating:</label>
-                                <div class="checkbox-group">
-                                    <label><input type="checkbox" name="contentRating[]" value="g" checked> G (General)</label>
-                                    <label><input type="checkbox" name="contentRating[]" value="pg" checked> PG (Parental Guidance)</label>
-                                    <label><input type="checkbox" name="contentRating[]" value="mature" checked> Mature</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" onclick="submitLookingGlassSearch()">Search</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script></script>
-    // Toggle advanced options visibility
-    function toggleAdvancedOptions(event) {
-        event.preventDefault(); // Prevent navigation to another page
-        const advancedOptions = document.getElementById('advancedSearchOptions');
-        if (advancedOptions) {
-            advancedOptions.classList.toggle('show');
-        }
-    }
 </script>
 
 {footer}

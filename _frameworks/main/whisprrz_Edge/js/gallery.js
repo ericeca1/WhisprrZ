@@ -177,37 +177,24 @@ function setupModals() {
 }
 
 /**
- * Open the gear modal and ensure it is centered
+ * Open gear modal and load content
  */
 function openGearModal() {
-    const modal = document.getElementById('gearModal');
-    if (modal) {
-        modal.style.display = 'block';
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        centerModal('gearModal');
-    }
+    openModal('gearModal', loadGearContent);
 }
 
 /**
- * Close the gear modal
+ * Close gear modal
  */
 function closeGearModal() {
-    const modal = document.getElementById('gearModal');
-    if (modal) {
-        modal.style.display = 'none';
-        document.body.style.overflow = ''; // Restore background scrolling
-    }
+    closeModal('gearModal');
 }
 
 /**
  * Show search modal and load content
  */
 function showSearchModal() {
-    const modal = document.getElementById('lookingGlassSearchModal');
-    if (modal) {
-        modal.style.display = 'block';
-        centerModal('lookingGlassSearchModal');
-    }
+    openModal('lookingGlassSearchModal', loadSearchContent);
 }
 
 /**
@@ -421,38 +408,6 @@ function checkDirectAccess() {
     }
 }
 
-/**
- * Ensure proper centering of modals when shown
- */
-function centerModal(modalId) {
-    const modal = document.getElementById(modalId);
-    if (modal) {
-        const dialog = modal.querySelector('.modal-dialog');
-        if (dialog) {
-            dialog.style.margin = '0 auto';
-            dialog.style.transform = 'none';
-        }
-    }
-}
-
-// Ensure modals are centered when shown
-document.addEventListener('DOMContentLoaded', function () {
-    const searchModal = document.getElementById('lookingGlassSearchModal');
-    const gearModal = document.getElementById('gearModal');
-
-    if (searchModal) {
-        searchModal.addEventListener('show.bs.modal', function () {
-            centerModal('lookingGlassSearchModal');
-        });
-    }
-
-    if (gearModal) {
-        gearModal.addEventListener('show.bs.modal', function () {
-            centerModal('gearModal');
-        });
-    }
-});
-
 // Expose key functions globally
 window.loadTab = loadTab;
 window.openGearModal = openGearModal;
@@ -460,23 +415,3 @@ window.closeGearModal = closeGearModal;
 window.showSearchModal = showSearchModal;
 window.hideSearchModal = hideSearchModal;
 window.fixGallery = enhanceGalleryDisplay;
-
-// JavaScript for Looking Glass functionality
-
-// Submit search form
-function submitLookingGlassSearch() {
-    const form = document.getElementById('lookingGlassSearchForm');
-    const formData = new FormData(form);
-
-    // Send AJAX request
-    fetch('/LookingGlass.php', {
-        method: 'POST',
-        body: formData,
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Search results:', data);
-            // Handle search results
-        })
-        .catch(error => console.error('Error:', error));
-}
