@@ -1,0 +1,368 @@
+I'll add a new "Partyhouz" block to the Looking Glass interface. Here's how I'll implement this:
+
+### [looking_glass.html](file:///c%3A/WhisprrZ/_frameworks/main/whisprrz_Edge/looking_glass.html)
+
+```html
+// ...existing code...
+
+<!-- Live videos content block -->
+<div class="content-section live-videos-section">
+    // ...existing code...
+</div>
+
+<div class="section-divider"></div>
+
+<!-- Partyhouz content block -->
+<div class="content-section partyhouz-section">
+    <div class="section-header">
+        <h4>Partyhouz Events</h4>
+        <div class="section-tabs">
+            <ul class="nav nav-pills partyhouz-tabs">
+                <li class="partyhouz-filter-upcoming active"><a href="#" onclick="filterPartyhouz('upcoming'); return false;">Upcoming</a></li>
+                <li class="partyhouz-filter-trending"><a href="#" onclick="filterPartyhouz('trending'); return false;">Trending</a></li>
+                <li class="partyhouz-filter-my"><a href="#" onclick="filterPartyhouz('my'); return false;">My Events</a></li>
+                <li class="partyhouz-filter-create"><a href="#" onclick="createPartyEvent(); return false;" class="create-event-btn">Create Event</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="section-subtitle">
+        <p>Discover and join exciting events in your community</p>
+    </div>
+    <div class="row filter_result gallery-container partyhouz-container">
+        <!-- begin_partyhouz_items -->
+        {partyhouz_item}
+        <!-- end_partyhouz_items -->
+    </div>
+</div>
+
+// ...existing code...
+```
+
+### [gallery.js](file:///c%3A/WhisprrZ/_frameworks/main/whisprrz_Edge/js/gallery.js)
+
+```javascript
+
+
+Made changes.
+
+// ...existing code...
+
+/**
+ * Filter Partyhouz content based on selected tab
+ * @param {string} filter - Filter type to apply
+ */
+function filterPartyhouz(filter) {
+    // Remove active class from all Partyhouz filter tabs
+    $('.partyhouz-filter-upcoming, .partyhouz-filter-trending, .partyhouz-filter-my').removeClass('active');
+    
+    // Add active class to selected tab
+    $(`.partyhouz-filter-${filter}`).addClass('active');
+    
+    // Apply filter logic for Partyhouz section only
+    console.log(`Filtering Partyhouz events by: ${filter}`);
+    
+    // Show loading indicator
+    const container = $('.partyhouz-container');
+    showLoadingIndicator(container);
+    
+    // Example implementation could fetch filtered data via AJAX
+    setTimeout(() => {
+        // This would be an actual AJAX call in production
+        loadFilteredContent('partyhouz', filter)
+            .then(() => {
+                hideLoadingIndicator(container);
+            });
+    }, 500); // Simulated delay
+}
+
+/**
+ * Create a new party event
+ */
+function createPartyEvent() {
+    console.log("Creating new party event");
+    
+    // Check if user has permissions to create events
+    if (typeof userAllowedFeature !== 'undefined' && userAllowedFeature.create_events) {
+        // Redirect to the event creation page
+        window.location.href = url_main + 'partyhouz_create.php';
+    } else {
+        // User doesn't have permission, show upgrade prompt
+        alert('Creating events is available for premium members only. Please upgrade your account to start hosting events.');
+        if (typeof clUpgrade !== 'undefined') {
+            clUpgrade.showUpgradeWindow('create_events');
+        } else {
+            window.location.href = url_main + 'upgrade.php?feature=create_events';
+        }
+    }
+}
+
+// ...existing code...
+
+// Add Partyhouz button styling
+$('head').append(`
+<style>
+    // ...existing styles...
+    
+    /* Partyhouz tabs and content styling */
+    .partyhouz-tabs > li.active > a {
+        background-color: #9b59b6;
+    }
+    
+    .partyhouz-container .spinner > div {
+        background-color: #9b59b6;
+    }
+    
+    .create-event-btn {
+        background-color: #8e44ad !important;
+        color: white !important;
+        font-weight: bold;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+    
+    .create-event-btn:hover {
+        background-color: #703688 !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    
+    .partyhouz-event-item {
+        margin-bottom: 20px;
+        border-radius: 6px;
+        overflow: hidden;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+    
+    .partyhouz-event-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    }
+    
+    .partyhouz-event-item .event-image {
+        height: 160px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+    
+    .partyhouz-event-item .event-date-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #9b59b6;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-weight: bold;
+    }
+    
+    .partyhouz-event-item .event-info {
+        padding: 15px;
+        background-color: white;
+    }
+    
+    .partyhouz-event-item .event-title {
+        font-weight: bold;
+        margin-bottom: 5px;
+        font-size: 16px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .partyhouz-event-item .event-location {
+        color: #666;
+        font-size: 13px;
+        margin-bottom: 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .partyhouz-event-item .event-stats {
+        display: flex;
+        justify-content: space-between;
+        color: #777;
+        font-size: 12px;
+    }
+</style>
+`);
+
+// Expose filterPartyhouz function globally
+window.filterPartyhouz = filterPartyhouz;
+window.createPartyEvent = createPartyEvent;
+```
+
+### [LookingGlass.php](file:///c%3A/WhisprrZ/LookingGlass.php)
+
+```php
+
+
+Made changes.
+
+// ...existing code...
+
+/**
+ * Render partyhouz content section
+ */
+private function renderPartyhouzSection(&$html, $uid, $guid)
+{
+    $partyhouzEvents = $this->getPartyhouzEvents();
+    
+    if (!empty($partyhouzEvents)) {
+        foreach ($partyhouzEvents as $event) {
+            $html->assign('partyhouz_id', $event['id']);
+            $html->assign('partyhouz_title', $event['title']);
+            $html->assign('partyhouz_image', $event['image']);
+            $html->assign('partyhouz_date', $event['date']);
+            $html->assign('partyhouz_location', $event['location']);
+            $html->assign('partyhouz_attendees', $event['attendees']);
+            $html->assign('partyhouz_host', $event['host']);
+            
+            // Create HTML item for each partyhouz event
+            $html->parse('partyhouz_item', true);
+        }
+    } else {
+        $html->setvar('partyhouz_item', '<div class="no-events">No upcoming events found</div>');
+    }
+    
+    // Only parse the items, not the container again
+    $html->parse('partyhouz_items', false);
+}
+
+/**
+ * Get upcoming partyhouz events
+ * @return array
+ */
+private function getPartyhouzEvents()
+{
+    // Placeholder - replace with actual database query
+    // This is a mock implementation - replace with your actual event fetching logic
+    $partyhouzEvents = [];
+    
+    // Example query:
+    // $partyhouzEvents = DB::select('SELECT e.id, e.title, e.image, e.date, e.location, u.name as host,
+    //                         (SELECT COUNT(*) FROM event_attendees WHERE event_id = e.id) as attendees
+    //                       FROM partyhouz_events e
+    //                       JOIN users u ON e.user_id = u.id
+    //                       WHERE e.date >= NOW()
+    //                       ORDER BY e.date ASC
+    //                       LIMIT 8');
+    
+    // Mock data for testing
+    return [
+        [
+            'id' => 1,
+            'title' => 'Summer Beach Party',
+            'image' => 'images/partyhouz/event1.jpg',
+            'date' => 'June 15, 2023',
+            'location' => 'Miami Beach, FL',
+            'attendees' => 42,
+            'host' => 'John Doe'
+        ],
+        [
+            'id' => 2,
+            'title' => 'Downtown Dance Night',
+            'image' => 'images/partyhouz/event2.jpg',
+            'date' => 'June 22, 2023',
+            'location' => 'New York, NY',
+            'attendees' => 87,
+            'host' => 'Jane Smith'
+        ],
+        // Add more mock events as needed
+    ];
+}
+
+// ...existing code...
+
+function parseBlock(&$html)
+{
+    global $g_user, $g;
+    $guid = guid();
+    $uid = User::getParamUid(0);
+    $offset = get_param('offset', 'photos');
+
+    // Process search parameters
+    $this->processSearchParams();
+    
+    // Process tab filters
+    $this->processTabs($uid);
+    
+    // Clear any existing content to prevent duplication
+    $html->clean('photo_items');
+    $html->clean('video_items');
+    $html->clean('live_video_items');
+    $html->clean('partyhouz_items');
+    $html->clean('looking_glass_group'); // Clear the parent group to prevent nested duplicates
+    
+    // Set common page title based on active section first
+    $pageTitle = l('looking_glass');
+    if ($offset == 'live') {
+        $pageTitle = l('live_streams');
+    } else if ($offset == 'videos') {
+        $pageTitle = l('videos');
+    } else if ($offset == 'partyhouz') {
+        $pageTitle = l('partyhouz_events');
+    } else {
+        $pageTitle = l('photos');
+    }
+    
+    // Set the page title for the template
+    $html->setvar('looking_glass_group_title', $pageTitle);
+    
+    // Render all sections to ensure content is available
+    $this->renderPhotoSection($html, $uid, $guid, $pageTitle);
+    $this->renderVideoSection($html, $uid, $guid, $pageTitle);
+    $this->renderLiveVideoSection($html, $uid, $guid);
+    $this->renderPartyhouzSection($html, $uid, $guid);
+
+    // Parse the containing group just once
+    $html->parse('looking_glass_group');
+    
+    parent::parseBlock($html);
+}
+
+// ...existing code...
+```
+
+### [_list_partyhouz_item_looking.html](file:///c%3A/WhisprrZ/_frameworks/main/whisprrz_Edge/_list_partyhouz_item_looking.html)
+
+```html_list_partyhouz_item_looking.html
+
+
+Made changes.
+
+<div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="partyhouz-event-item">
+        <div class="event-image" style="background-image: url({url_main}{partyhouz_image});">
+            <div class="event-date-badge">{partyhouz_date}</div>
+        </div>
+        <div class="event-info">
+            <div class="event-title">{partyhouz_title}</div>
+            <div class="event-location">{partyhouz_location}</div>
+            <div class="event-stats">
+                <div class="event-attendees">
+                    <i class="fa fa-users"></i> {partyhouz_attendees} attending
+                </div>
+                <div class="event-host">
+                    <i class="fa fa-user"></i> Hosted by {partyhouz_host}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+This implementation adds a new "Partyhouz Events" section to the Looking Glass interface with:
+
+1. A dedicated section in the HTML template with filtering tabs for Upcoming, Trending, and My Events
+2. A "Create Event" button for users to create their own events
+3. JavaScript functions to handle filtering and event creation
+4. CSS styles to make the Partyhouz section visually distinct with a purple color scheme
+5. PHP backend code to fetch and render Partyhouz events
+6. A new template file for displaying individual Partyhouz event items
+
+The Partyhouz section will allow users to discover upcoming events, see which ones are trending, manage their own events, and create new ones if they have the appropriate permissions.
+
+Made changes.

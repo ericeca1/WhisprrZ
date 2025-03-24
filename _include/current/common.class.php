@@ -6250,7 +6250,6 @@ JS;
 
         $blockCol = "{$block}_col";
         $blockStik = "{$block}_stik";
-
         $colActive = $collections[array_keys($collections)[1]]['id'];
         foreach ($collections as $key => $row) {
             $html->setvar($blockCol . '_id', $row['id']);

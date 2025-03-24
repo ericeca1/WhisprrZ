@@ -1,0 +1,621 @@
+/* Styles for modals */
+
+/* General modal styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1050;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.modal-dialog {
+    margin: 5% auto;
+    max-width: 600px;
+    width: 90%;
+    transform: none;
+}
+
+.modal-content {
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.modal-header {
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.modal-title {
+    margin: 0;
+    font-size: 18px;
+}
+
+.modal-body {
+    padding: 15px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.modal-footer {
+    padding: 15px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+}
+
+/* Ensure the modal-backdrop is properly layered */
+.modal-backdrop {
+    z-index: 1040;
+}
+
+.modal {
+    z-index: 1050;
+}
+
+/* Fix potential issues with body scroll when modal is open */
+body.modal-open {
+    overflow: hidden;
+}
+
+/* Common modal styling for looking glass and gear modals */
+#gearModal, #lookingGlassSearchModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 9999 !important;
+}
+
+/* Dialog sizing */
+#gearModal .modal-dialog {
+    width: 80%;
+    max-width: 800px;
+    margin: 50px auto !important;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#lookingGlassSearchModal .modal-dialog {
+    width: 500px;
+    margin: 80px auto !important;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Common modal components */
+.modal-content {
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.modal-header {
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e5;
+    position: relative;
+}
+
+.modal-title {
+    margin: 0;
+    font-size: 18px;
+}
+
+.modal-body {
+    padding: 15px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.modal-footer {
+    padding: 15px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+}
+
+.close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Modal fadeout fix */
+.modal-backdrop.fade {
+    display: none;
+}
+
+/* Modal styles for Looking Glass */
+.lg-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.lg-modal .modal-dialog {
+    background-color: #fefefe;
+    margin: 5% auto;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 5px;
+    box-shadow: 0 3px 7px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+.lg-modal .modal-content {
+    position: relative;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+}
+
+.lg-modal .modal-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid #e5e5e5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lg-modal .modal-title {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 18px;
+}
+
+.lg-modal .close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    opacity: 0.5;
+}
+
+.lg-modal .close:hover,
+.lg-modal .close:focus {
+    color: #000;
+    opacity: 0.8;
+    text-decoration: none;
+}
+
+.lg-modal .modal-body {
+    padding: 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.lg-modal .modal-footer {
+    padding: 15px 20px;
+    border-top: 1px solid #e5e5e5;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.lg-modal .modal-footer button {
+    margin-left: 10px;
+}
+
+/* Tab navigation */
+.lg-modal .nav-tabs {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.lg-modal .nav-tabs > li {
+    float: left;
+    margin-bottom: -1px;
+}
+
+.lg-modal .nav-tabs > li > a {
+    margin-right: 2px;
+    line-height: 1.42857143;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+    padding: 10px 15px;
+    display: block;
+    text-decoration: none;
+}
+
+.lg-modal .nav-tabs > li.active > a,
+.lg-modal .nav-tabs > li.active > a:hover,
+.lg-modal .nav-tabs > li.active > a:focus {
+    color: #555;
+    cursor: default;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+}
+
+.lg-modal .tab-content > .tab-pane {
+    display: none;
+}
+
+.lg-modal .tab-content > .active {
+    display: block;
+}
+
+/* Form elements within modals */
+.lg-modal .form-group {
+    margin-bottom: 15px;
+}
+
+.lg-modal label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.lg-modal .form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.lg-modal .checkbox {
+    position: relative;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.lg-modal .checkbox label {
+    min-height: 20px;
+    padding-left: 20px;
+    margin-bottom: 0;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.lg-modal .checkbox input[type=checkbox] {
+    position: absolute;
+    margin-left: -20px;
+    margin-top: 4px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .lg-modal .modal-dialog {
+        width: 95%;
+        margin: 10% auto;
+    }
+    
+    .lg-modal .modal-body {
+        max-height: 60vh;
+    }
+}
+
+/* Fix for scrolling and overflows */
+body.modal-open {
+    overflow: hidden;
+}
+
+/* Add specific styling for the Looking Glass search modal */
+#lookingGlassSearchModal.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    outline: 0;
+    z-index: 1050;
+}
+
+#lookingGlassSearchModal .modal-dialog {
+    position: relative;
+    width: auto;
+    margin: 10% auto;
+    max-width: 600px;
+    transform: none !important;
+    left: 0 !important;
+}
+
+#lookingGlassSearchModal.fade .modal-dialog {
+    transform: translate(0, -25%);
+    transition: transform 0.3s ease-out;
+}
+
+#lookingGlassSearchModal.in .modal-dialog {
+    transform: translate(0, 0) !important;
+}
+
+/* Responsive adjustments for search modal */
+@media (max-width: 767px) {
+    #lookingGlassSearchModal .modal-dialog {
+        margin: 20px auto;
+        width: 95%;
+    }
+}
+
+/* Ensure proper display of form elements in search modal */
+#lookingGlassSearchForm .form-group {
+    margin-bottom: 15px;
+}
+
+#lookingGlassSearchForm .checkbox-group,
+#lookingGlassSearchForm .radio-group {
+    margin-top: 5px;
+}
+
+/* Specific styling for the Looking Glass search modal */
+#lookingGlassSearchModal.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    display: none;
+    overflow: hidden;
+    outline: 0;
+}
+
+#lookingGlassSearchModal.modal.in {
+    display: block;
+}
+
+#lookingGlassSearchModal.in .modal-dialog {
+    position: relative;
+    width: 500px;
+    max-width: 90%;
+    margin: 10% auto;
+    left: 0 !important;
+    right: 0 !important;
+    transform: translate(0, 0) !important;
+}
+
+/* Additional modal styles to ensure proper display */
+#lookingGlassSearchModal .modal-content {
+    position: relative;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+#lookingGlassSearchModal .modal-header {
+    border-bottom: 1px solid #e5e5e5;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#lookingGlassSearchModal .modal-header .close {
+    margin-top: -2px;
+    float: right;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: 0.2;
+    cursor: pointer;
+}
+
+#lookingGlassSearchModal .modal-header .close:hover {
+    opacity: 0.5;
+}
+
+#lookingGlassSearchModal .modal-body {
+    position: relative;
+    padding: 15px;
+}
+
+#lookingGlassSearchModal .modal-footer {
+    padding: 15px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    #lookingGlassSearchModal.in .modal-dialog {
+        width: 95%;
+        margin: 20px auto;
+    }
+}
+
+/* Complete rewrite of search modal positioning to ensure proper centering */
+.search-modal-centered.modal {
+    text-align: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: 0;
+}
+
+.search-modal-centered.modal:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -4px; /* Adjusts for spacing */
+}
+
+.search-modal-centered .modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+    width: 500px;
+    max-width: 90%;
+    margin: 30px auto;
+    position: relative;
+    transform: none !important;
+    left: 0 !important;
+}
+
+.search-modal-centered .modal-content {
+    position: relative;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    outline: 0;
+}
+
+.search-modal-centered .modal-header {
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e5;
+    min-height: 16.43px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-modal-centered .modal-header .close {
+    margin-top: -2px;
+    cursor: pointer;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    opacity: 0.2;
+}
+
+.search-modal-centered .modal-header .close:hover {
+    opacity: 0.5;
+}
+
+.search-modal-centered .modal-body {
+    position: relative;
+    padding: 15px;
+}
+
+.search-modal-centered .modal-footer {
+    padding: 15px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+}
+
+/* Override Bootstrap modal backdrop to ensure it covers the entire screen */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    background-color: #000;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .search-modal-centered .modal-dialog {
+        width: 95%;
+        margin: 20px auto;
+    }
+}
+
+/* Full reset for the search modal to ensure proper centering */
+#lookingGlassSearchModal {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    z-index: 1050 !important;
+    overflow: hidden !important;
+    outline: 0 !important;
+    display: none;
+}
+
+#lookingGlassSearchModal.in {
+    display: block !important;
+}
+
+#lookingGlassSearchModal .modal-dialog {
+    width: 500px !important;
+    max-width: 90% !important;
+    margin: 10% auto !important;
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+}
+
+#lookingGlassSearchModal .modal-content {
+    position: relative !important;
+    background-color: #fff !important;
+    border-radius: 8px !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .modal-dialog {
+        width: 95%;
+    }
+}
+
+/* Ensure modals are visually distinct */
+#lookingGlassSearchModal {
+    z-index: 1050; /* Ensure it appears above other elements */
+}
+
+#gearModal {
+    z-index: 1060; /* Ensure it appears above the search modal */
+}
+
+/* Prevent modals from overlapping */
+.modal-backdrop {
+    z-index: 1040; /* Ensure backdrop is below the modals */
+}
+
+/* Adjust the search modal to appear 1/4 higher */
+#lookingGlassSearchModal .modal-dialog {
+    margin: 5% auto; /* Adjusted from 10% to 5% to bring it higher */
+    position: relative;
+    max-width: 600px;
+    width: 90%;
+    transform: none;
+}
+
+/* Ensure proper styling for the advanced options toggle */
+#advancedSearchOptions {
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    display: block; /* Always visible */
+}

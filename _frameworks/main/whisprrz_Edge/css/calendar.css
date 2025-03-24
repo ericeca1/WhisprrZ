@@ -1,0 +1,143 @@
+/* Calendar styling */
+.btn.dropdown-toggle {
+    height: 43px;
+    padding-left: 15px;
+}
+
+.calendar-location {
+    display: flex;
+}
+
+.calendar-category {
+    display: flex;
+    margin-top: 20px;
+}
+
+.calendar-category .form-group {
+    margin-right: 10px;
+}
+
+.looking_for {
+    display: flex;
+    justify-content: space-around;
+}
+
+.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
+    margin: 5px 10px 0 0;
+}
+
+.search-date-distance {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.search-date-distance .calendar-search-distance {
+    margin-left: 50px;
+}
+
+.calendar-date {
+    display: flex;
+}
+
+/* Calendar search form styles */
+#calendar-search-form input,
+#looking-glass-search-form input {
+    border: 1px solid #ccc;
+}
+
+/* Looking glass search form styles */
+#looking-glass-search-form {
+    padding: 0;
+    margin: 0;
+}
+
+#looking-glass-search-form .form-group {
+    margin-bottom: 15px;
+}
+
+#looking-glass-search-form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#looking-glass-search-form select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+#looking-glass-search-form .looking_for {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+#looking-glass-search-form .looking_for .form-check {
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+}
+
+#looking-glass-search-form .calendar-category {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+#looking-glass-search-form .calendar-category .form-group {
+    margin-right: 15px;
+    width: calc(50% - 15px);
+}
+
+#looking-glass-search-form .search-date-distance {
+    display: flex;
+    justify-content: space-between;
+}
+
+#looking-glass-search-form .calendar-search-date,
+#looking-glass-search-form .calendar-search-distance {
+    width: 48%;
+}
+
+#looking-glass-search-form .calendar-date {
+    display: flex;
+    gap: 10px;
+}
+
+/* Responsive styles */
+@media (max-width: 780px) {
+    .calendar-location {
+        display: block;
+    }
+    .calendar-category {
+        display: block;
+    }
+    .looking_for {
+        display: block;
+    }
+    .search-date-distance {
+        display: block;
+    }
+    .search-date-distance .calendar-search-distance {
+        margin-left: 0;
+    }
+    .calendar-search-distance label {
+        margin-top: 5px;
+    }
+    #looking-glass-search-form .looking_for {
+        flex-direction: column;
+    }
+    #looking-glass-search-form .calendar-category .form-group {
+        width: 100%;
+    }
+    #looking-glass-search-form .search-date-distance {
+        flex-direction: column;
+    }
+    #looking-glass-search-form .calendar-search-date,
+    #looking-glass-search-form .calendar-search-distance {
+        width: 100%;
+    }
+}

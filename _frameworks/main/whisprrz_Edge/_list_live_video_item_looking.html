@@ -1,0 +1,28 @@
+<div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="live-stream-item">
+        <div class="stream-thumbnail">
+            <a href="{url_main}{url}" class="stream-link" data-stream-id="{id}">
+                <img src="{url_main}{thumbnail}" alt="{title}" class="img-responsive">
+                <div class="live-indicator">LIVE</div>
+                <div class="stream-viewers">
+                    <i class="fa fa-eye"></i> {viewers}
+                </div>
+                <div class="play-button">
+                    <i class="fa fa-play"></i>
+                </div>
+            </a>
+        </div>
+        <div class="stream-info">
+            <div class="stream-title">{title}</div>
+            <div class="stream-host">
+                <img src="{url_main}{host_photo}" alt="{host_name}" class="host-avatar">
+                <span>{host_name}</span>
+            </div>
+        </div>
+        <div class="item-actions">
+            <a class="ico_im" href="#" onclick="sendMessage({user_id}); return false;" title="Send IM">
+                <i class="fa fa-comment"></i>
+            </a>
+        </div>
+    </div>
+</div>

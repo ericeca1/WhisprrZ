@@ -1,0 +1,568 @@
+/* Gear modal specific styles */
+#gearModal .nav-tabs {
+    margin-bottom: 15px;
+}
+
+#gearModal .tab-pane {
+    padding: 10px;
+}
+
+#gearModal .form-group {
+    margin-bottom: 20px;
+}
+
+#gearModal .custom-control {
+    margin-bottom: 5px;
+}
+
+#gearModal h4 {
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Improve tab navigation on mobile */
+@media (max-width: 768px) {
+    #gearModal .nav-tabs {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    #gearModal .nav-item {
+        flex: 0 0 50%;
+    }
+}
+
+/* Settings Gear Modal styles */
+#settingsTabs {
+    margin-bottom: 15px;
+}
+
+#settingsTabs li {
+    margin-right: 5px;
+}
+
+#settingsTabs a {
+    color: #555;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-bottom: 0;
+    padding: 8px 15px;
+    border-radius: 4px 4px 0 0;
+}
+
+#settingsTabs a.active,
+#settingsTabs a:hover {
+    background-color: #fff;
+    border-bottom: 1px solid transparent;
+}
+
+.tab-content {
+    border: 1px solid #ddd;
+    border-top: 0;
+    padding: 15px;
+    min-height: 300px;
+}
+
+.settings-section {
+    margin-bottom: 20px;
+}
+
+.settings-section h4 {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.settings-option {
+    margin-bottom: 15px;
+}
+
+.settings-option label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.settings-option .form-control {
+    width: 100%;
+}
+
+.settings-option .checkbox {
+    margin-top: 0;
+}
+
+.settings-option .checkbox label {
+    font-weight: normal;
+}
+
+/* Gear Modal Styles */
+#gearModal {
+    display: none;
+    position: fixed;
+    z-index: 1060; /* Ensure it appears above other elements */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    text-align: center;
+}
+
+#gearModal:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+#gearModal .modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+    position: relative;
+    margin: 0 auto;
+    max-width: 500px;
+    width: 90%;
+    transform: none;
+}
+
+/* Remove the modal header and style the title at the top */
+#gearModal .modal-content {
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
+    position: relative;
+}
+
+#gearModal .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    color: #999;
+    transition: color 0.3s;
+}
+
+#gearModal .close-btn:hover {
+    color: #333;
+}
+
+#gearModal h2 {
+    margin: 0;
+    padding: 15px;
+    background-color: #f5f5f5;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+#gearModal .modal-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+}
+
+#gearModal .modal-footer {
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    text-align: center;
+}
+
+#gearModal .pref-section {
+    margin-bottom: 20px;
+}
+
+#gearModal .pref-section p {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+#gearModal label {
+    display: block;
+    margin-bottom: 10px;
+    color: #555;
+    cursor: pointer;
+}
+
+#gearModal .pref-select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+}
+
+#gearModal .radio-group, 
+#gearModal .checkbox-group {
+    margin-left: 10px;
+    margin-bottom: 15px;
+}
+
+#gearModal .radio-group label, 
+#gearModal .checkbox-group label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+#gearModal .radio-group input[type="radio"], 
+#gearModal .checkbox-group input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+#gearModal .save-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+#gearModal .save-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    #gearModal .modal-content {
+        width: 95%;
+        margin: 10% auto;
+        padding: 15px;
+    }
+    
+    #gearModal h2 {
+        font-size: 18px;
+    }
+    
+    #gearModal .save-btn {
+        padding: 8px 15px;
+    }
+}
+
+/* Notification popup styles */
+#notification-popup {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    animation: slide-in 0.3s ease-out;
+}
+
+@keyframes slide-in {
+    from { transform: translateY(100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.lg-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+}
+
+.modal-dialog {
+    background: white;
+    width: 500px;
+    max-width: 90%;
+    margin: 5% auto;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: modalFadeIn 0.3s;
+}
+
+@keyframes modalFadeIn {
+    from {opacity: 0; transform: translateY(-20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.modal-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    position: relative;
+}
+
+.modal-header h4 {
+    margin: 0;
+    font-size: 1.4em;
+    color: #333;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #888;
+}
+
+.close:hover {
+    color: #333;
+}
+
+.modal-body {
+    padding: 20px;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.modal-footer {
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    text-align: right;
+}
+
+/* Settings tabs */
+.nav-tabs {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.nav-tabs > li {
+    float: left;
+    margin-bottom: -1px;
+}
+
+.nav-tabs > li > a {
+    margin-right: 2px;
+    line-height: 1.42857143;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+    padding: 10px 15px;
+    color: #777;
+    text-decoration: none;
+}
+
+.nav-tabs > li > a:hover {
+    border-color: #eee #eee #ddd;
+    color: #333;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover {
+    color: #555;
+    cursor: default;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+}
+
+.tab-content > .tab-pane {
+    display: none;
+}
+
+.tab-content > .active {
+    display: block;
+}
+
+/* Settings options */
+.settings-section {
+    margin-bottom: 25px;
+}
+
+.settings-section h4 {
+    margin: 0 0 15px 0;
+    font-size: 16px;
+    color: #555;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.settings-option {
+    margin-bottom: 15px;
+}
+
+.settings-option .form-control {
+    max-width: 100%;
+    border-radius: 4px;
+}
+
+.settings-option .checkbox {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.settings-option .checkbox label {
+    font-weight: normal;
+}
+
+/* User Preferences Modal Styles */
+.user-prefs-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+}
+
+.user-prefs-modal-content {
+    background: white;
+    width: 500px;
+    max-width: 90%;
+    margin: 5% auto;
+    position: relative;
+    left: 0; /* Fix for modal being off-screen */
+    right: 0; /* Center horizontally */
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: modalFadeIn 0.3s;
+    transform: translateX(0); /* Ensure no horizontal shift */
+}
+
+.user-prefs-modal-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    position: relative;
+}
+
+.user-prefs-modal-header h2 {
+    margin: 0;
+    font-size: 1.4em;
+    color: #333;
+}
+
+.user-prefs-close-btn {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #888;
+}
+
+.user-prefs-close-btn:hover {
+    color: #333;
+}
+
+.user-prefs-modal-body {
+    padding: 20px;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.user-prefs-modal-footer {
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    text-align: right;
+}
+
+/* Preference sections styling */
+.pref-section {
+    margin-bottom: 25px;
+}
+
+.pref-section h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.1em;
+    color: #555;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+}
+
+.pref-option {
+    margin-bottom: 15px;
+}
+
+.pref-option p {
+    margin: 0 0 8px 0;
+}
+
+.pref-select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.radio-group, .checkbox-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.radio-group label, .checkbox-group label {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.radio-group input, .checkbox-group input {
+    margin-right: 10px;
+}
+
+/* Buttons */
+.user-prefs-save-btn, .user-prefs-cancel-btn {
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    font-weight: 500;
+}
+
+.user-prefs-save-btn {
+    background-color: #3498db;
+    color: white;
+    margin-left: 10px;
+}
+
+.user-prefs-save-btn:hover {
+    background-color: #2980b9;
+}
+
+.user-prefs-cancel-btn {
+    background-color: #f5f5f5;
+    color: #555;
+}
+
+.user-prefs-cancel-btn:hover {
+    background-color: #e5e5e5;
+}
+
+/* Responsive adjustments for user preferences */
+@media (max-width: 600px) {
+    .user-prefs-modal-content {
+        width: 95%;
+        margin: 10% auto;
+        left: 0; /* Ensure centered on mobile */
+        right: 0;
+    }
+    
+    .user-prefs-modal-body {
+        max-height: 70vh;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    #gearModal .modal-dialog {
+        width: 95%;
+    }
+}
