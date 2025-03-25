@@ -619,3 +619,345 @@ body.modal-open {
     background-color: #f9f9f9;
     display: block; /* Always visible */
 }
+
+/* Location dropdowns styling */
+#lookingGlassSearchModal .form-group .row {
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+#lookingGlassSearchModal .form-group .row > div {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 10px;
+}
+
+#lookingGlassSearchModal select.form-control {
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+#lookingGlassSearchModal select.form-control:disabled {
+    background-color: #eee;
+    cursor: not-allowed;
+}
+
+#lookingGlassSearchModal select.form-control:focus {
+    border-color: #66afe9;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+}
+
+/* Responsive adjustments for location dropdowns */
+@media (max-width: 767px) {
+    #lookingGlassSearchModal .form-group .row > div {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+}
+
+/* Special style for Gear modal without dialog */
+#gearModal {
+    display: none;
+    position: fixed;
+    z-index: 1060;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+    text-align: center;
+}
+
+#gearModal .modal-content {
+    position: relative;
+    background-color: #fff;
+    width: 400px;
+    margin: 5% auto; /* Changed from 10% to 5% to bring it higher */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    max-width: 90%;
+    display: inline-block;
+    text-align: left;
+}
+
+#gearModal .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+#gearModal .close-btn:hover {
+    opacity: 1;
+}
+
+#gearModal h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+#gearModal .save-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+#gearModal .save-btn:hover {
+    background-color: #0069d9;
+}
+
+/* Responsive adjustments for Gear modal */
+@media (max-width: 480px) {
+    #gearModal .modal-content {
+        width: 95%;
+        margin: 30% auto 0;
+        padding: 15px;
+    }
+    
+    #gearModal h2 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+}
+
+/* Autocomplete styling for search input */
+.autocomplete-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.autocomplete-suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+    z-index: 1060;
+    display: none;
+}
+
+.autocomplete-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+.autocomplete-item:hover {
+    background-color: #f5f5f5;
+}
+
+.suggestion-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.suggestion-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.suggestion-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.suggestion-icon i {
+    font-size: 16px;
+    color: #666;
+}
+
+.suggestion-text {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.suggestion-name {
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.suggestion-type,
+.suggestion-count {
+    font-size: 12px;
+    color: #777;
+}
+
+/* Active suggestion styling */
+.autocomplete-item.active {
+    background-color: #e6f2ff;
+}
+
+/* Header search autocomplete styling */
+.header-suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+    z-index: 1090; /* Higher than the modal's z-index to ensure it appears on top */
+    display: none;
+}
+
+/* Ensure the header search has relative positioning */
+.header form, .search-form {
+    position: relative;
+}
+
+/* Style for header search wrapper */
+.header .autocomplete-wrapper {
+    position: relative;
+    width: 100%;
+    display: inline-block;
+}
+
+/* Adjustments for header search suggestions */
+@media (max-width: 767px) {
+    .header-suggestions {
+        width: 100%;
+        left: 0;
+    }
+}
+
+/* Autocomplete styling for Looking Glass search modal */
+.autocomplete-wrapper {
+    position: relative;
+    width: 100%;
+    display: block;
+}
+
+.autocomplete-suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+    z-index: 1060;
+    display: none;
+}
+
+.autocomplete-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+.autocomplete-item:hover, 
+.autocomplete-item.active {
+    background-color: #f5f5f5;
+}
+
+.suggestion-avatar,
+.suggestion-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.suggestion-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.suggestion-icon {
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.suggestion-icon i {
+    font-size: 16px;
+    color: #666;
+}
+
+.suggestion-text {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.suggestion-name {
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.suggestion-type,
+.suggestion-count {
+    font-size: 12px;
+    color: #777;
+}
+
+/* Ensure z-index is high enough for modal */
+#searchAutocompleteSuggestions {
+    z-index: 10000;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .autocomplete-suggestions {
+        width: 100%;
+    }
+}
