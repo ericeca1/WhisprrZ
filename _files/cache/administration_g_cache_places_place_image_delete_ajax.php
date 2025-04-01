@@ -1,1 +1,0 @@
-a:1:{s:14:"to_php_alfabet";a:1:{s:20:"default header color";s:20:"default_header_color";}}
