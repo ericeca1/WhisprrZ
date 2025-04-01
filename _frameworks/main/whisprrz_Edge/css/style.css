@@ -21669,3 +21669,95 @@ body.drag_cover *{
   padding: 2px 5px;
 }
 /* Popcorn - added 2024-11-4 customn folders */
+hted item */
+}
+
+/* Optionally add different colors for alternating items */
+.ui-menu-item:nth-child(odd) {
+  background-color: #f5f5f5;  /* Lighter background for odd items */
+}
+
+.ui-menu-item:nth-child(even) {
+  background-color: #ffffff;  /* Lighter background for even items */
+}
+
+/* Popcorn - added 2024-10-14 */
+.has-submenu {
+  position: relative;
+}
+
+.has-submenu:hover .submenu {
+  display: block;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  width: 16rem;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  z-index: 1; /* Higher z-index to ensure visibility */
+}
+
+@media (max-width: 768px) {
+  .submenu {
+      right: auto; /* Adjust positioning for smaller screens */
+      left: 0; /* Display the submenu below the parent */
+      top: 100%;
+  }
+}
+
+.submenu li a {
+  display: block;
+  color: #333;
+  text-decoration: none;
+
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  white-space: nowrap;
+  padding: 8px 12px;
+  height: auto;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submenu li a:hover {
+  background-color: #f5f5f5;
+}
+
+.more_menu_collapse {
+  overflow: visible; /* Allow the submenu to overflow the parent container */
+}
+
+/* Popcorn - added 2024-11-4 custom folders */
+.photo-upload-button-group {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  flex-wrap: wrap;
+  margin: -10px;
+}
+
+.photo-col-md-6 {
+  padding: 10px;
+  flex: 1 1 100%;
+}
+
+@media (min-width: 768px) {
+  .photo-col-md-6 {
+    flex: 0 0 50%;
+  }
+}
+
+.photo-upload-select {
+  height: 35px;
+  padding: 2px 5px;
+}
+/* Popcorn - added 2024-11-4 customn folders */
