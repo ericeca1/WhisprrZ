@@ -1,1 +1,0 @@
-a:2:{s:14:"to_php_alfabet";a:1:{s:0:"";s:0:"";}s:15:"html_block_vars";a:1:{s:14:"arrayKeysCache";a:4:{s:8:"no_image";i:8;s:13:"left_inactive";i:13;s:14:"right_inactive";i:14;s:4:"main";i:4;}}}
