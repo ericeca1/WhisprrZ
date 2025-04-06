@@ -89,7 +89,7 @@
                 <div class="tabbable-line">
                     <ul class="nav nav-tabs">
                         <li>
-                            <a href="javascript:void(0);" onclick="showSearchModal(); return false;" data-toggle="modal" data-target="#lookingGlassSearchModal">Search</a>
+                            <a href="javascript:void(0);" onclick="openSearchModal(); return false;" data-toggle="modal" data-target="#lookingGlassSearchModal">Search</a>
                         </li>
                         <li class="friends-tab">
                             <a href="{url_page_photos_list}?offset=friends" onclick="loadTab('friends', '{url_page_photos_list}?offset=friends'); return false;">Friends</a>
@@ -223,67 +223,70 @@
 </div>
 
 <!-- Updated Gear Modal -->
-<div id="gearModal" class="modal">
-    <div class="modal-content">
-        <h2>User Preferences</h2>
-        <span class="close-btn" onclick="closeGearModal()">&times;</span>
-        <div class="modal-body">
-            <!-- Preferences Content -->
-            <div class="pref-section">
-                <label for="defaultContent">Default View Show On Top:</label>
-                <select id="defaultContent" class="pref-select">
-                    <option value="photos" selected>Photos</option>
-                    <option value="videos">Videos</option>
-                    <option value="live">Live Streams</option>
-                    <option value="partyhouz">Partyhouz Events</option>
-                </select>
-            </div>
-
-            <div class="pref-section">
-                <p>Sort content by default using:</p>
-                <div class="radio-group">
-                    <label><input type="radio" name="sort" value="latest" checked> Latest</label>
-                    <label><input type="radio" name="sort" value="trending"> Trending</label>
-                    <label><input type="radio" name="sort" value="popular"> Most Viewed</label>
+<div id="gearModal" class="modal" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <h2>User Preferences</h2>
+            <span class="close-btn" onclick="closeGearModal()">&times;</span>
+            <div class="modal-body">
+                <!-- Preferences Content -->
+                <div class="pref-section">
+                    <label for="defaultContent">Default View Show On Top:</label>
+                    <select id="defaultContent" class="pref-select">
+                        <option value="photos" selected>Photos</option>
+                        <option value="videos">Videos</option>
+                        <option value="live">Live Streams</option>
+                        <option value="partyhouz">Partyhouz Events</option>
+                    </select>
+                </div>
+    
+                <div class="pref-section">
+                    <p>Sort content by default using:</p>
+                    <div class="radio-group">
+                        <label><input type="radio" name="sort" value="latest" checked> Latest</label>
+                        <label><input type="radio" name="sort" value="trending"> Trending</label>
+                        <label><input type="radio" name="sort" value="popular"> Most Viewed</label>
+                    </div>
+                </div>
+    
+                <div class="pref-section">
+                    <p>Content Display:</p>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" id="showPhotos" checked> Show Photos</label>
+                        <label><input type="checkbox" id="showVideos" checked> Show Videos</label>
+                        <label><input type="checkbox" id="showLiveStreams" checked> Show Live Streams</label>
+                        <label><input type="checkbox" id="showPartyhouz" checked> Show Partyhouz Events</label>
+                    </div>
+                </div>
+    
+                <div class="pref-section">
+                    <p>Notifications:</p>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" id="notifyLiveStreams" checked> Notify when friends go live</label>
+                        <label><input type="checkbox" id="notifyPartyhouz"> Notify about upcoming events</label>
+                    </div>
+                </div>
+    
+                <div class="pref-section">
+                    <label for="itemsPerPage">Items per page:</label>
+                    <select id="itemsPerPage" class="pref-select">
+                        <option value="12">12 items</option>
+                        <option value="24" selected>24 items</option>
+                        <option value="48">48 items</option>
+                    </select>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" id="autoplayVideos"> Autoplay videos when browsing</label>
+                        <label><input type="checkbox" id="hoverAutoplayVideos"> Hover Autoplay videos when browsing</label>
+                        <label><input type="checkbox" id="muteVideos" checked> Mute videos by default</label>
+                    </div>
                 </div>
             </div>
-
-            <div class="pref-section">
-                <p>Content Display:</p>
-                <div class="checkbox-group">
-                    <label><input type="checkbox" id="showPhotos" checked> Show Photos</label>
-                    <label><input type="checkbox" id="showVideos" checked> Show Videos</label>
-                    <label><input type="checkbox" id="showLiveStreams" checked> Show Live Streams</label>
-                    <label><input type="checkbox" id="showPartyhouz" checked> Show Partyhouz Events</label>
-                </div>
+            <div class="modal-footer">
+                <button class="save-btn" onclick="saveUserPreferences()">Save Preferences</button>
             </div>
-
-            <div class="pref-section">
-                <p>Notifications:</p>
-                <div class="checkbox-group">
-                    <label><input type="checkbox" id="notifyLiveStreams" checked> Notify when friends go live</label>
-                    <label><input type="checkbox" id="notifyPartyhouz"> Notify about upcoming events</label>
-                </div>
-            </div>
-
-            <div class="pref-section">
-                <label for="itemsPerPage">Items per page:</label>
-                <select id="itemsPerPage" class="pref-select">
-                    <option value="12">12 items</option>
-                    <option value="24" selected>24 items</option>
-                    <option value="48">48 items</option>
-                </select>
-                <div class="checkbox-group">
-                    <label><input type="checkbox" id="autoplayVideos"> Autoplay videos when browsing</label>
-                    <label><input type="checkbox" id="hoverAutoplayVideos"> Hover Autoplay videos when browsing</label>
-                    <label><input type="checkbox" id="muteVideos" checked> Mute videos by default</label>
-                </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <button class="save-btn" onclick="saveUserPreferences()">Save Preferences</button>
         </div>
     </div>
+    
 </div>
 
 <!-- Search Modal -->
@@ -414,8 +417,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Open gear modal
     window.openGearModal = function() {
         if (gearModal) {
-            gearModal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
+            //gearModal.style.display = 'block';
         }
     };
 
@@ -423,26 +425,15 @@ document.addEventListener('DOMContentLoaded', function() {
     window.closeGearModal = function() {
         if (gearModal) {
             gearModal.style.display = 'none';
-            document.body.style.overflow = '';
         }
     };
 
-    // Show search modal
-    window.showSearchModal = function() {
+    // Open search modal
+    window.openSearchModal = function() {
         if (searchModal) {
             $('#lookingGlassSearchModal').modal('show');
         }
     };
-
-    // Fix search tab click to open the search modal
-    const searchTab = document.querySelector('a[data-target="#lookingGlassSearchModal"]');
-    if (searchTab) {
-        searchTab.addEventListener('click', function(e) {
-            e.preventDefault();
-            showSearchModal();
-        });
-    }
-
     
 });
 </script>
