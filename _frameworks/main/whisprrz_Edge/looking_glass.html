@@ -10,74 +10,6 @@
 <!-- Load gallery.js -->
 <script src="{url_main}_frameworks/main/whisprrz_Edge/js/gallery.js{cache_version_param}"></script>
 
-<!-- Fix modal styling directly in the page -->
-<style>
-#gearModal {
-    display: none;
-    position: fixed;
-    z-index: 10000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    overflow: auto;
-}
-
-#gearModal .modal-content {
-    background: white;
-    width: 400px;
-    padding: 20px;
-    margin: 10% auto;
-    border-radius: 10px;
-    text-align: center;
-    position: relative;
-    max-width: 90%;
-}
-
-#gearModal .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    font-size: 20px;
-}
-
-#gearModal .save-btn {
-    background-color: #007bff;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-top: 10px;
-    width: 100%;
-}
-
-.pref-section {
-    margin-bottom: 15px;
-    text-align: left;
-}
-
-#gearModal select {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-}
-
-#gearModal .checkbox-group, 
-#gearModal .radio-group {
-    text-align: left;
-    margin-top: 5px;
-}
-
-#gearModal label {
-    display: block;
-    margin-bottom: 5px;
-    cursor: pointer;
-}
-</style>
-
 <!-- Prevent header from showing in middle of page with proper structure -->
 <div class="looking-glass-wrapper" id="looking-glass-main-container">
     <!-- begin_looking_glass_group -->
@@ -89,7 +21,7 @@
                 <div class="tabbable-line">
                     <ul class="nav nav-tabs">
                         <li>
-                            <a href="javascript:void(0);" onclick="openSearchModal(); return false;" data-toggle="modal" data-target="#lookingGlassSearchModal">Search</a>
+                            <a href="javascript:void(0);" onclick="showSearchModal(); return false;" data-toggle="modal" data-target="#lookingGlassSearchModal">Search</a>
                         </li>
                         <li class="friends-tab">
                             <a href="{url_page_photos_list}?offset=friends" onclick="loadTab('friends', '{url_page_photos_list}?offset=friends'); return false;">Friends</a>
@@ -108,7 +40,7 @@
             </div>
 
             <div class="feed_head_txt">
-                <a class="icon_setting_gear" href="javascript:void(0);" onclick="openGearModal(); return false;"></a>
+                <a class="icon_setting_gear" href="javascript:void(0);"></a>
             </div>
         </div>
 
@@ -358,7 +290,6 @@
                                         <label for="searchCountry">Country:</label>
                                         <select class="form-control" id="searchCountry" name="country_id" onchange="loadStates(this.value)">
                                             <option value="">Select Country</option>
-                                            <!-- Countries will be populated dynamically -->
                                         </select>
                                     </div>
                                     <div class="col-md-4">
@@ -408,34 +339,5 @@
         </div>
     </div>
 </div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const gearModal = document.getElementById('gearModal');
-    const searchModal = document.getElementById('lookingGlassSearchModal');
-
-    // Open gear modal
-    window.openGearModal = function() {
-        if (gearModal) {
-            //gearModal.style.display = 'block';
-        }
-    };
-
-    // Close gear modal
-    window.closeGearModal = function() {
-        if (gearModal) {
-            gearModal.style.display = 'none';
-        }
-    };
-
-    // Open search modal
-    window.openSearchModal = function() {
-        if (searchModal) {
-            $('#lookingGlassSearchModal').modal('show');
-        }
-    };
-    
-});
-</script>
 
 {footer}

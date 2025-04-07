@@ -13,7 +13,7 @@ $(document).ready(function() {
     // Function to initialize Looking Glass search
     function initLookingGlassSearch() {
         // Open the Looking Glass search modal when search icon is clicked
-        $('.icon_setting_gear, .search-icon').click(function(e) {
+        $('.search-icon').click(function(e) {
             e.preventDefault();
             $('#lookingGlassSearchModal').modal('show');
         });
@@ -270,12 +270,6 @@ function openGearModal() {
         // Show the modal
         modal.style.display = 'block';
         
-        // Position the modal near the top of the viewport
-        const modalContent = modal.querySelector('.modal-content');
-        if (modalContent) {
-            modalContent.style.margin = '5% auto';
-        }
-        
         // Prevent background scrolling
         document.body.style.overflow = 'hidden';
         
@@ -301,11 +295,7 @@ function closeGearModal() {
  * Show search modal and load content
  */
 function showSearchModal() {
-    const modal = document.getElementById('lookingGlassSearchModal');
-    if (modal) {
-        modal.style.display = 'block';
-        centerModal('lookingGlassSearchModal');
-    }
+    $('#lookingGlassSearchModal').modal('show');
 }
 
 /**
@@ -336,8 +326,33 @@ function openModal(modalId, loadFn) {
  */
 function closeModal(modalId) {
     console.log('Closing modal:', modalId);
-    document.getElementById(modalId).style.display = 'none';
-    document.body.style.overflow = ''; // Restore scrolling
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        // Hide the modal
+        modal.style.display = 'none';
+        modal.classList.remove('show'); // Remove Bootstrap's 'show' class if present
+        modal.setAttribute('aria-hidden', 'true'); // Mark the modal as hidden
+
+        // Restore scrolling on the body
+        document.body.style.overflow = '';
+
+        // Remove the modal backdrop if it exists
+        const backdrop = document.querySelector('.modal-backdrop');
+        if (backdrop) {
+            backdrop.remove();
+        }
+
+        // Remove the 'modal-open' class from the body
+        document.body.classList.remove('modal-open');
+
+        // Move focus to a logical element outside the modal
+        const triggerButton = document.querySelector(`[data-target="#${modalId}"]`);
+        if (triggerButton) {
+            triggerButton.focus();
+        }
+    } else {
+        console.warn(`Modal with ID "${modalId}" not found.`);
+    }
 }
 
 /**
@@ -600,14 +615,11 @@ function loadCountries() {
     // Reset dependent dropdowns
     resetDependentDropdowns();
     
-    // Check if we've already loaded countries
     if (countrySelect.options.length <= 1) {
-        // Fetch countries from the server
-        fetch('/ajax/get_countries.php')
+        fetch('/ajax.php?cmd=geo_countries')
             .then(response => response.json())
             .then(data => {
                 if (data && data.length > 0) {
-                    // Add countries to the dropdown
                     data.forEach(country => {
                         const option = document.createElement('option');
                         option.value = country.id;
@@ -615,13 +627,11 @@ function loadCountries() {
                         countrySelect.appendChild(option);
                     });
                 } else {
-                    // If no data or API fails, add some common countries as fallback
                     addFallbackCountries(countrySelect);
                 }
             })
             .catch(error => {
                 console.error('Error loading countries:', error);
-                // Add fallback countries
                 addFallbackCountries(countrySelect);
             });
     }
