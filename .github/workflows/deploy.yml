@@ -23,4 +23,4 @@ jobs:
         password: ${{ secrets.CPANEL_PASSWORD }}
         protocol: ftp
         local-dir: ./
-        server-dir: /home/eric/public_html/htdocs/whisprrz.com/
+        server-dir: /public_html/htdocs/whisprrz.com/
