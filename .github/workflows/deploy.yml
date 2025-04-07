@@ -23,7 +23,7 @@ jobs:
           password: ${{ secrets.CPANEL_PASSWORD }}
           protocol: ftp
           local-dir: ./
-          server-dir: public_html/htdocs/whisprrz.com/
+          server-dir: /public_html/htdocs/whisprrz.com/
           dangerous-clean-slate: false
           timeout: 60
     env:
