@@ -1,4 +1,4 @@
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/eric/public_html/htdocs/whisprrz.com
+    - export DEPLOYPATH=public_html/htdocs/whisprrz.com
     - /bin/cp -R images $DEPLOYPATH
