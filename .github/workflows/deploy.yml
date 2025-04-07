@@ -7,7 +7,7 @@ on:
 
 jobs:
   ftp-deploy:
-    name: 📤 Upload via FTPS
+    name: 📤 Upload via FTP
     runs-on: ubuntu-latest
 
     steps:
@@ -21,9 +21,9 @@ jobs:
           server: ${{ secrets.CPANEL_HOST }}
           port: 21
           password: ${{ secrets.CPANEL_PASSWORD }}
-          protocol: ftps
+          protocol: ftp
           local-dir: ./
-          server-dir: /public_html/htdocs/whisprrz.com/
+          server-dir: public_html/htdocs/whisprrz.com/
           dangerous-clean-slate: false
           timeout: 60
     env:
