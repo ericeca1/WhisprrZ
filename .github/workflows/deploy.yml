@@ -24,3 +24,8 @@ jobs:
         protocol: ftp
         local-dir: ./
         server-dir: public_html/htdocs/whisprrz.com/
+        exclude: |
+          **/node_modules/**
+          **/.git/**
+          **/_cron/**
+        timeout: 180
