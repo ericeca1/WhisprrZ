@@ -36,4 +36,3 @@ jobs:
           **/wow/**          # May contain non-versioned or sensitive logic
           **/.well-known/**  # For SSL, domain verification — hands off
           **/lang/**         # If languages are managed server-side
-        timeout: 180
