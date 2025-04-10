@@ -28,4 +28,12 @@ jobs:
           **/node_modules/**
           **/.git/**
           **/_cron/**
+          **/files/**        # Often used for user uploads, you don’t want to wipe this
+          **/incube/**       # Might be licensing or runtime-related
+          **/m/**            # Could be minified or media-related content
+          **/pay/**          # Likely related to payment logic or logs
+          **/partner/**      # External/internal integration, avoid overwriting
+          **/wow/**          # May contain non-versioned or sensitive logic
+          **/.well-known/**  # For SSL, domain verification — hands off
+          **/lang/**         # If languages are managed server-side
         timeout: 180
